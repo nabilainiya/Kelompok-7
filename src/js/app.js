@@ -9,16 +9,18 @@ const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 
 // Struktur satu task: { id, text, completed }
-// NOTE: "completed" sudah disiapkan di data model, tapi belum
-// dipakai di mana pun. Itu tugas kamu di Fitur #1.
 let tasks = [];
 let nextId = 1;
 
-// TODO (Fitur #4 - Simpan ke localStorage):
-// Saat aplikasi pertama kali dibuka, load "tasks" dari localStorage
-// (kalau ada) sebelum renderTasks() dipanggil pertama kali di bawah.
-// Hint: gunakan JSON.parse(localStorage.getItem("tasks")) dan cek
-// null-nya sebelum dipakai.
+// ============================================================
+// FITUR #4 - LOAD DATA DARI LOCAL STORAGE
+// ============================================================
+
+const savedTasks = localStorage.getItem("tasks");
+
+if (savedTasks !== null) {
+  tasks = JSON.parse(savedTasks);
+}
 
 function renderTasks() {
   taskList.innerHTML = "";
@@ -31,26 +33,18 @@ function renderTasks() {
     return;
   }
 
-  // TODO (Fitur #3 - Filter Task):
-  // Sebelum di-loop, filter dulu "tasks" sesuai filter aktif
-  // (semua / aktif / selesai). Sekarang semua task selalu ditampilkan.
+  // TODO (Fitur #3 - Filter Task)
   tasks.forEach((task) => {
     const li = document.createElement("li");
     li.className = "task-item";
     li.dataset.id = task.id;
 
-    // TODO (Fitur #1 - Tandai Selesai):
-    // Tambahkan <input type="checkbox"> di sini yang mencerminkan
-    // task.completed, dan tambahkan class "completed" pada `li`
-    // kalau task.completed === true.
+    // TODO (Fitur #1 - Tandai Selesai)
 
     const span = document.createElement("span");
     span.textContent = task.text;
 
-    // TODO (Fitur #2 - Edit Task):
-    // Tambahkan tombol "Edit" di sini. Saat diklik, ganti `span`
-    // menjadi <input> berisi teks task supaya bisa diubah,
-    // lalu simpan perubahannya saat user menekan Enter / klik Save.
+    // TODO (Fitur #2 - Edit Task)
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
@@ -62,14 +56,13 @@ function renderTasks() {
     taskList.appendChild(li);
   });
 
-  // TODO (Fitur #5 - Counter):
-  // Update elemen #task-counter di sini setiap kali renderTasks() dipanggil,
-  // isinya jumlah task yang belum selesai. Contoh: "3 task tersisa".
+  // TODO (Fitur #5 - Counter)
 
-  // TODO (Fitur #4 - Simpan ke localStorage):
-  // Setiap kali renderTasks() dipanggil, data "tasks" sudah berubah,
-  // jadi ini tempat yang pas untuk menyimpan ulang ke localStorage.
-  // Hint: localStorage.setItem("tasks", JSON.stringify(tasks));
+  // ============================================================
+  // FITUR #4 - SIMPAN DATA KE LOCAL STORAGE
+  // ============================================================
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function addTask(text) {
@@ -90,28 +83,23 @@ function deleteTask(id) {
   renderTasks();
 }
 
-// TODO (Fitur #1 - Tandai Selesai):
-// Buat function toggleComplete(id) yang membalik nilai task.completed
-// untuk task dengan id yang cocok, lalu panggil renderTasks().
+// TODO (Fitur #1 - Tandai Selesai)
+// Buat function toggleComplete(id)
 
-// TODO (Fitur #2 - Edit Task):
-// Buat function editTask(id, newText) yang mengubah task.text
-// untuk task dengan id yang cocok, lalu panggil renderTasks().
+// TODO (Fitur #2 - Edit Task)
+// Buat function editTask(id, newText)
 
-// TODO (Fitur #6 - Clear Completed):
-// Buat function clearCompleted() yang menghapus semua task dengan
-// completed === true dari array "tasks", lalu panggil renderTasks().
-// Jangan lupa tambahkan event listener untuk tombol #clear-completed.
+// TODO (Fitur #6 - Clear Completed)
+// Buat function clearCompleted(id)
 
-// TODO (Fitur #3 - Filter Task):
-// Simpan filter yang sedang aktif di sebuah variabel, misalnya
-// `let currentFilter = "all";`, lalu tambahkan event listener untuk
-// setiap .filter-btn yang mengubah currentFilter dan memanggil
-// renderTasks() ulang.
+// TODO (Fitur #3 - Filter Task)
+// Buat currentFilter dan event listener filter
 
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
+
   addTask(taskInput.value);
+
   taskInput.value = "";
   taskInput.focus();
 });

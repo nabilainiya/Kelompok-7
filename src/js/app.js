@@ -39,7 +39,16 @@ function renderTasks() {
     li.className = "task-item";
     li.dataset.id = task.id;
 
-    // TODO (Fitur #1 - Tandai Selesai)
+    // TODO (Fitur #1 - Tandai Selesai) - done
+
+    if (task.completed) {
+      li.classList.add("completed");
+    }
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.completed;
+    checkbox.addEventListener("change", () => toggleComplete(task.id));
 
     const span = document.createElement("span");
     span.textContent = task.text;
@@ -51,6 +60,7 @@ function renderTasks() {
     deleteBtn.textContent = "✕";
     deleteBtn.addEventListener("click", () => deleteTask(task.id));
 
+    li.appendChild(checkbox); //ftr 1
     li.appendChild(span);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
@@ -84,7 +94,14 @@ function deleteTask(id) {
 }
 
 // TODO (Fitur #1 - Tandai Selesai)
-// Buat function toggleComplete(id)
+// Buat function toggleComplete(id) - done
+
+function toggleComplete(id) {
+  tasks = tasks.map((task) =>
+    task.id === id ? { ...task, completed: !task.completed } : task
+  );
+  renderTasks();
+}
 
 // TODO (Fitur #2 - Edit Task)
 // Buat function editTask(id, newText)

@@ -150,6 +150,12 @@ function editTask(id, newText) {
 // TODO (Fitur #6 - Clear Completed)
 // Buat function clearCompleted(id)
 
+function clearCompleted() {
+  tasks = tasks.filter((task) => !task.completed);
+  renderTasks();
+
+
+}
 // TODO (Fitur #3 - Filter Task)
 // Buat currentFilter dan event listener filter
 
@@ -161,5 +167,7 @@ taskForm.addEventListener("submit", (event) => {
   taskInput.value = "";
   taskInput.focus();
 });
+
+document.getElementById("clear-completed").addEventListener("click", clearCompleted);
 
 renderTasks();

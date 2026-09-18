@@ -34,7 +34,14 @@ function renderTasks() {
   }
 
   // TODO (Fitur #3 - Filter Task)
-  tasks.forEach((task) => {
+  let filteredTasks = tasks;
+  if (currentFilter === "active") {
+    filteredTasks = tasks.filter((task) => !task.completed);
+  } else if (currentFilter === "completed") {
+    filteredTasks = tasks.filter((task) => task.completed);
+  }
+
+  filteredTasks.forEach((task) => {
     const li = document.createElement("li");
     li.className = "task-item";
     li.dataset.id = task.id;
@@ -152,6 +159,19 @@ function editTask(id, newText) {
 
 // TODO (Fitur #3 - Filter Task)
 // Buat currentFilter dan event listener filter
+let currentFilter = "all";
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    currentFilter = button.dataset.filter;
+
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    renderTasks();
+  });
+});
 
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();

@@ -54,6 +54,35 @@ function renderTasks() {
     span.textContent = task.text;
 
     // TODO (Fitur #2 - Edit Task)
+    const editBtn = document.createElement("button");
+    editBtn.className = "edit-btn";
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = task.text;
+
+      const saveBtn = document.createElement("button");
+      saveBtn.className = "save-btn";
+      saveBtn.textContent = "Save";
+
+      span.replaceWith(input);
+      input.focus();
+      editBtn.replaceWith(saveBtn);
+
+      function saveEdit() {
+        editTask(task.id, input.value);
+      }
+
+      saveBtn.addEventListener("click", saveEdit);
+
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          saveEdit();
+        }
+      });
+    });
+
 
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
@@ -62,6 +91,7 @@ function renderTasks() {
 
     li.appendChild(checkbox); //ftr 1
     li.appendChild(span);
+    li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
   });
@@ -105,6 +135,17 @@ function toggleComplete(id) {
 
 // TODO (Fitur #2 - Edit Task)
 // Buat function editTask(id, newText)
+function editTask(id, newText) {
+    const trimmed = newText.trim();
+    if (trimmed === "") return;
+
+    const task = tasks.find((task) => task.id === id);
+
+    if (task) {
+      task.text = trimmed;
+      renderTasks();
+    }
+}
 
 // TODO (Fitur #6 - Clear Completed)
 // Buat function clearCompleted(id)

@@ -7,6 +7,7 @@
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
+const taskCounter = document.getElementById("task-counter");
 
 // Struktur satu task: { id, text, completed }
 let tasks = [];
@@ -24,6 +25,9 @@ if (savedTasks !== null) {
 
 function renderTasks() {
   taskList.innerHTML = "";
+
+  const remainingTasks = tasks.filter((task) => !task.completed).length;
+  taskCounter.textContent = `${remainingTasks} task tersisa`;
 
   if (tasks.length === 0) {
     const emptyState = document.createElement("li");

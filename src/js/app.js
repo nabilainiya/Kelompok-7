@@ -162,12 +162,12 @@ function editTask(id, newText) {
 let currentFilter = "all";
 const filterButtons = document.querySelectorAll(".filter-btn");
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    currentFilter = button.dataset.filter;
+filterButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentFilter = btn.dataset.filter;
 
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
 
     renderTasks();
   });

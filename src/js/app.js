@@ -1,19 +1,17 @@
 // ============================================================
-// To Do List - Revisi Lengkap (merged: feature/local-storage + dev)
+// To Do List 
 // ============================================================
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 
-// Elemen tambahan (opsional — kalau belum ada di HTML, kode tetap aman jalan)
 const taskCounter = document.getElementById("task-counter");
 const clearCompletedBtn =
   document.getElementById("clear-completed-btn") ||
   document.getElementById("clear-completed");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
-// Struktur satu task: { id, text, completed }
 let tasks = [];
 let nextId = 1;
 let currentFilter = "all"; // "all" | "active" | "completed"
@@ -28,8 +26,6 @@ if (savedTasks !== null) {
   tasks = JSON.parse(savedTasks);
 }
 
-// FIX: nextId dihitung ulang berdasarkan id terbesar yang sudah ada,
-// supaya tidak bentrok (duplikat id) dengan task lama setelah refresh.
 if (tasks.length > 0) {
   nextId = Math.max(...tasks.map((task) => task.id)) + 1;
 }
@@ -54,8 +50,8 @@ function renderTasks() {
     emptyState.className = "empty-state";
     emptyState.textContent =
       tasks.length === 0
-        ? "Belum ada task. Tambahkan satu di atas!"
-        : "Tidak ada task untuk filter ini.";
+        ? "No tasks yet. Add one above!"
+        : "No tasks for this filter.";
     taskList.appendChild(emptyState);
     updateCounter();
     saveTasks();
@@ -74,9 +70,11 @@ function renderTasks() {
     // FITUR #1 - Tandai Selesai
     // ------------------------------------------------------
     const checkbox = document.createElement("input");
+
     checkbox.type = "checkbox";
     checkbox.className = "complete-checkbox";
     checkbox.checked = task.completed;
+
     checkbox.addEventListener("change", () => toggleComplete(task.id));
 
     const span = document.createElement("span");
@@ -87,6 +85,7 @@ function renderTasks() {
     // FITUR #2 - Edit Task (tombol Edit -> Save)
     // ------------------------------------------------------
     const editBtn = document.createElement("button");
+
     editBtn.className = "edit-btn";
     editBtn.textContent = "Edit";
     editBtn.addEventListener("click", () => {
@@ -117,14 +116,34 @@ function renderTasks() {
     });
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.className = "delete-btn";
-    deleteBtn.textContent = "✕";
+
+     deleteBtn.className = "delete-btn";
+    deleteBtn.setAttribute("aria-label", "Delete task");
+
+    deleteBtn.innerHTML = `
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M3 6h18"></path>
+        <path d="M8 6V4h8v2"></path>
+        <path d="M19 6l-1 14H6L5 6"></path>
+        <path d="M10 11v5"></path>
+        <path d="M14 11v5"></path>
+      </svg>
+    `;
+
     deleteBtn.addEventListener("click", () => deleteTask(task.id));
 
     li.appendChild(checkbox);
     li.appendChild(span);
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
+
     taskList.appendChild(li);
   });
 
@@ -146,7 +165,8 @@ function saveTasks() {
 function updateCounter() {
   if (!taskCounter) return;
   const remaining = tasks.filter((task) => !task.completed).length;
-  taskCounter.textContent = `${remaining} task tersisa`;
+  
+  taskCounter.textContent = `${remaining} tasks left`;
 }
 
 function addTask(text) {
@@ -214,8 +234,8 @@ filterButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     currentFilter = btn.dataset.filter;
 
-    filterButtons.forEach((b) => b.classList.remove("active-filter"));
-    btn.classList.add("active-filter");
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
 
     renderTasks();
   });

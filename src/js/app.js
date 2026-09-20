@@ -1,5 +1,5 @@
 // ============================================================
-// To Do List - Revisi Lengkap
+// To Do List - Revisi Lengkap (merged: feature/local-storage + dev)
 // ============================================================
 
 const taskForm = document.getElementById("task-form");
@@ -8,7 +8,9 @@ const taskList = document.getElementById("task-list");
 
 // Elemen tambahan (opsional — kalau belum ada di HTML, kode tetap aman jalan)
 const taskCounter = document.getElementById("task-counter");
-const clearCompletedBtn = document.getElementById("clear-completed-btn");
+const clearCompletedBtn =
+  document.getElementById("clear-completed-btn") ||
+  document.getElementById("clear-completed");
 const filterButtons = document.querySelectorAll(".filter-btn");
 
 // Struktur satu task: { id, text, completed }
@@ -26,7 +28,7 @@ if (savedTasks !== null) {
   tasks = JSON.parse(savedTasks);
 }
 
-// FIX: nextId harus dihitung ulang berdasarkan id terbesar yang sudah ada,
+// FIX: nextId dihitung ulang berdasarkan id terbesar yang sudah ada,
 // supaya tidak bentrok (duplikat id) dengan task lama setelah refresh.
 if (tasks.length > 0) {
   nextId = Math.max(...tasks.map((task) => task.id)) + 1;
@@ -82,31 +84,36 @@ function renderTasks() {
     span.textContent = task.text;
 
     // ------------------------------------------------------
-    // FITUR #2 - Edit Task (double click teks untuk edit)
+    // FITUR #2 - Edit Task (tombol Edit -> Save)
     // ------------------------------------------------------
-    span.addEventListener("dblclick", () => {
-      const editInput = document.createElement("input");
-      editInput.type = "text";
-      editInput.className = "edit-input";
-      editInput.value = task.text;
+    const editBtn = document.createElement("button");
+    editBtn.className = "edit-btn";
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "edit-input";
+      input.value = task.text;
 
-      const finishEdit = () => {
-        editTask(task.id, editInput.value);
-      };
+      const saveBtn = document.createElement("button");
+      saveBtn.className = "save-btn";
+      saveBtn.textContent = "Save";
 
-      editInput.addEventListener("blur", finishEdit);
-      editInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          editInput.blur();
-        } else if (e.key === "Escape") {
-          editInput.removeEventListener("blur", finishEdit);
-          renderTasks();
+      span.replaceWith(input);
+      editBtn.replaceWith(saveBtn);
+      input.focus();
+      input.select();
+
+      function saveEdit() {
+        editTask(task.id, input.value);
+      }
+
+      saveBtn.addEventListener("click", saveEdit);
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          saveEdit();
         }
       });
-
-      li.replaceChild(editInput, span);
-      editInput.focus();
-      editInput.select();
     });
 
     const deleteBtn = document.createElement("button");
@@ -116,6 +123,7 @@ function renderTasks() {
 
     li.appendChild(checkbox);
     li.appendChild(span);
+    li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
   });

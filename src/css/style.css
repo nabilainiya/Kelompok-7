@@ -62,6 +62,33 @@ h1 {
   Tambahkan style untuk .filters dan .filter-btn di sini.
   Tandai tombol filter yang sedang aktif, misalnya dengan class ".active".
 */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #dbdbdb;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: #8c8c92;
+  color: #fff;
+}
+
+.filter-btn.active {
+  font-weight: bold;
+  background: #4f46e5;
+  color: #fff;
+}
 
 .task-list {
   list-style: none;
@@ -110,17 +137,93 @@ h1 {
   TODO (Fitur #1 - Tandai Selesai):
   Tambahkan style untuk task yang sudah selesai, misalnya class ".completed"
   pada .task-item yang membuat teksnya dicoret (text-decoration: line-through)
-  dan warnanya lebih pudar.
+  dan warnanya lebih pudar. - done
 */
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
 
 /*
   TODO (Fitur #2 - Edit Task):
   Tambahkan style untuk mode edit, misalnya input text yang muncul
   menggantikan <span> saat task sedang diedit.
 */
+.task-item input{
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.task-item .edit-btn {
+  border: none;
+  background: #ecef44;
+  color: #000000;
+  border-radius: 4px;
+  padding: 4px 9px;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.task-item .edit-btn:hover {
+  font-weight: bold;
+  color: #000000;
+  opacity : 0.9;
+}
+
+.task-item .save-btn {
+  border: none;
+  background: #47ef44;
+  color: #fff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.task-item .save-btn:hover {
+  font-weight: bold;
+  color: #fff;
+  opacity : 0.9;
+}
+
+
 
 /*
   TODO (Fitur #5 & #6 - Counter & Clear Completed):
   Tambahkan style untuk .footer yang berisi counter task dan tombol
   "Hapus yang Selesai".
 */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+#task-counter {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+#clear-completed {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+#clear-completed:hover {
+  background: #4338ca;
+}

@@ -1,14 +1,6 @@
-# Starter-FP-LBE-2026: To Do List
+# Final Project **LBE Lab RPL 2026** berupa aplikasi To-Do List sederhana menggunakan HTML, CSS, dan JavaScript murni tanpa framework.
 
-Starter project untuk Final Project **LBE Lab RPL 2026**. Fokus utama tugas
-ini adalah melatih **workflow Git/GitHub yang benar dalam pengerjaan proyek
-secara tim**. Aplikasi yang dibangun sengaja dibuat sederhana (To Do List,
-HTML+CSS+JS murni, tanpa framework) agar setiap kelompok dapat berfokus pada
-proses kerja tim, bukan pada kompleksitas teknologi.
-
-Kode starter pada folder [`/src`](./src) **sengaja dibuat belum lengkap**.
-Setiap kelompok bertugas melengkapi fitur yang belum tersedia secara
-kolaboratif, masing-masing melalui branch dan Pull Request tersendiri.
+Project ini dikembangkan secara kolaboratif menggunakan workflow Git/GitHub dengan branch, Pull Request, review, dan integrasi fitur melalui branch `dev`.
 
 ---
 
@@ -57,57 +49,37 @@ kebutuhan masing-masing.
 
 ```
 src/
-├── index.html      # struktur halaman + beberapa komentar TODO
+├── index.html      # struktur halaman To-Do List
 ├── css/
-│   └── style.css   # styling dasar + komentar TODO untuk style fitur baru
+│   └── style.css   # styling dan responsive UI
 └── js/
-    └── app.js      # logic dasar (tambah & hapus task) + komentar TODO
+    └── app.js      # logic dan seluruh fitur To-Do List
 ```
 
-Fitur yang sudah berfungsi pada starter:
-- Menambahkan task baru melalui form.
+Fitur yang sudah berfungsi:
+- Menambahkan task baru.
 - Menampilkan daftar task.
 - Menghapus task.
-
-Komentar `// TODO (Fitur #...)` pada ketiga berkas di atas menandai titik-titik
-yang perlu dilengkapi. Terdapat 6 titik fitur, sebagaimana dijelaskan pada
-bagian 6.
+- Menandai task sebagai selesai.
+- Mengedit task.
+- Memfilter task berdasarkan status.
+- Menyimpan data task menggunakan `localStorage`.
+- Menampilkan jumlah task yang belum selesai.
+- Menghapus seluruh task yang sudah selesai.
 
 ---
 
 ## 4. Pembagian Kelompok & Role
 
-Kelas dibagi menjadi **8 kelompok, masing-masing beranggotakan 5 orang**.
-Karena proyek ini bersifat **frontend-only** (tanpa backend/server),
-pembagian role yang disarankan **bukan** FE/BE sebagaimana proyek full-stack
-pada umumnya, melainkan sebagai berikut:
+Proyek ini dikerjakan oleh 1 kelompok yang terdiri dari 5 orang. Karena proyek bersifat frontend-only tanpa backend/server, pembagian tugas dalam kelompok disesuaikan dengan fitur dan kebutuhan pengembangan aplikasi.
 
-| Role | Jumlah | Tanggung Jawab Utama |
+**| Role | Jumlah |	Tanggung Jawab Utama |**
 |---|---|---|
-| **Project Manager (PM)** | 1 orang | Menyusun dan mengelola backlog (Issues/Projects board), membuat branch `dev`, melakukan review dan merge seluruh Pull Request, menjaga timeline pengerjaan, memperbarui README/dokumentasi, serta menjadi pihak yang paling memahami status proyek setiap harinya |
-| **Feature Developer** | 4 orang | Masing-masing bertanggung jawab atas 1–2 fitur (lihat bagian 6) secara *vertical slice*: HTML, CSS, dan JS untuk fitur tersebut dikerjakan secara menyeluruh oleh satu orang, pada branch `feature/*` masing-masing |
-
-**Alasan pembagian per-fitur (vertical slice), bukan per-layer** (misalnya
-HTML oleh satu anggota, CSS oleh anggota lain, dan JS oleh anggota berikutnya):
-karena fitur-fitur yang dikerjakan berukuran kecil dan relatif independen satu
-sama lain (toggle complete, edit, filter, dan seterusnya), pembagian per-fitur
-membuat setiap anggota memiliki branch tersendiri dengan **risiko merge
-conflict yang jauh lebih kecil** dibandingkan apabila beberapa orang bergantian
-mengedit berkas yang sama untuk layer yang berbeda. Pendekatan ini juga lebih
-merepresentasikan cara kerja tim yang sesungguhnya (feature-based, bukan
-layer-based).
-
-PM **tetap diperkenankan** mengambil satu fitur berukuran kecil apabila
-beban kerjanya memungkinkan, namun prioritas utamanya tetap menjaga backlog,
-melakukan review Pull Request, dan mengoordinasikan tim, bukan mengerjakan
-fitur secara mandiri.
-
-> Apabila suatu kelompok lebih sesuai dengan pembagian lain (misalnya dua
-> anggota berfokus pada seluruh aspek styling/UX dan dua anggota lainnya
-> berfokus pada seluruh logic JS), pembagian tersebut tetap dapat diterima,
-> selama alur kerja Git tetap benar (branch per pekerjaan, Pull Request, dan
-> review). Pembagian **yang tidak disarankan** adalah 1 PM + 2 FE + 2 BE ala
-> proyek full-stack, mengingat proyek ini tidak memiliki backend.
+| **Project Manager (PM)** | 1 orang |	Mengelola backlog dan GitHub Project, mengatur pembagian tugas, membuat dan mengelola branch dev, melakukan review dan merge Pull Request, memantau timeline dan progres proyek, melakukan integrasi fitur, memperbarui README/dokumentasi, serta mengembangkan fitur Task Counter dan melakukan finalisasi project |
+| **Feature Developer 1**	| 1 orang |	Bertanggung jawab atas fitur Save Data to localStorage, termasuk implementasi HTML, CSS, dan JavaScript pada branch feature/* |
+| **Feature Developer 2**	| 1 orang	| Bertanggung jawab atas fitur Mark Task as Complete, termasuk implementasi HTML, CSS, dan JavaScript pada branch feature/* |
+| **Feature Developer 3**	| 1 orang	| Bertanggung jawab atas fitur Edit Task dan Filter Task, termasuk implementasi HTML, CSS, dan JavaScript pada branch feature/* |
+| **Feature Developer 4**	| 1 orang	| Bertanggung jawab atas fitur Clear Completed Tasks, termasuk implementasi HTML, CSS, dan JavaScript pada branch feature/* |
 
 ---
 
@@ -120,181 +92,53 @@ September 2026, dengan batas pengumpulan pukul **23.59** pada hari terakhir.
 | Hari | Tanggal | Fokus |
 |---|---|---|
 | Senin | 14 Sept | **Pengumuman FP**: final project diumumkan ke seluruh kelas, pembagian 8 kelompok (masing-masing 5 orang), dan akses ke repo starter ini dibagikan. Belum ada pengerjaan kode pada hari ini. |
-| Selasa | 15 Sept | **Kickoff**: PM melakukan fork repo starter ini ke akun/organisasi kelompok, menyiapkan board, memecah backlog menjadi Issues, dan membuat branch `dev` pada fork tersebut. Seluruh anggota melakukan `git clone` dari fork kelompok, memastikan starter dapat dijalankan, dan mulai coding pada branch `feature/*` masing-masing hari itu juga. Fitur #4 (localStorage) sebaiknya dikerjakan **lebih dahulu** apabila memungkinkan, lihat catatan pada bagian 6. |
-| Rabu | 16 Sept | Pengerjaan berlanjut. Pull Request pertama mulai diajukan dan direview. |
-| Kamis | 17 Sept | Pengerjaan dan review Pull Request berlanjut. Diharapkan minimal 2–3 fitur sudah ter-merge ke `dev`. |
-| Jumat | 18 Sept | Fitur yang tersisa diselesaikan, Pull Request terakhir diajukan. |
-| Sabtu | 19 Sept | **Integrasi dan pengujian**: seluruh fitur diuji bersama pada branch `dev`, kemudian bug hasil integrasi diperbaiki. |
-| Minggu | 20 Sept | **Batas akhir, pukul 23.59**: penyempurnaan tampilan (polishing), pembaruan README apabila diperlukan, merge `dev` ke `main` pada fork kelompok, kemudian ajukan Pull Request dari fork ke repo starter ini sebagai bentuk pengumpulan tugas. |
-
-Timeline dapat disesuaikan sepanjang ritmenya tetap terjaga: **hindari
-mengerjakan seluruh pekerjaan pada hari terakhir**. Progres harian (siapa
-yang mengajukan Pull Request, siapa yang melakukan review, kapan proses merge
-dilakukan) justru menjadi salah satu aspek yang dinilai, lihat bagian 7.
+| Selasa | 15 Sept | **Kickoff**: PM melakukan fork repo starter ini ke akun/organisasi kelompok, menyiapkan board, memecah backlog menjadi Issues, dan membuat branch `dev` pada fork tersebut. Seluruh anggota melakukan `git clone` dari fork kelompok, memastikan starter dapat dijalankan, dan mulai coding pada branch `feature/*` masing-masing hari itu juga. 
+| Rabu | 16 Sept | **Pengerjaan fitur**: seluruh anggota melanjutkan implementasi fitur masing-masing. PM memantau progres dan memastikan setiap fitur dikerjakan melalui branch `feature/*`. |
+| Kamis | 17 Sept | **Feature development & review**: Pull Request untuk fitur **Save Data to localStorage** dan **Mark Task as Complete** diajukan, direview, dan di-merge ke `dev`. |
+| Jumat | 18 Sept | **Feature development & integration**: fitur **Edit Task**, **Filter Task**, **Clear Completed Tasks**, dan **Task Counter** diselesaikan dan Pull Request masing-masing diproses melalui review dan merge ke `dev`. |
+| Sabtu | 19 Sept | **Integrasi dan pengujian**: seluruh fitur diuji bersama pada branch `dev`. Ditemukan dan diperbaiki beberapa bug hasil integrasi, termasuk perbaikan pada fitur **Filter Task**. |
+| Minggu | 20 Sept | **Finalisasi**: dilakukan perbaikan lanjutan pada fitur **localStorage**, penyempurnaan tampilan/UI (*polishing*), serta pengecekan akhir seluruh fitur. Setelah project siap, branch `dev` di-merge ke `main` pada fork kelompok dan Pull Request dari fork kelompok ke repo starter diajukan sebagai bentuk pengumpulan tugas sebelum pukul 23.59. |
 
 ---
 
-## 6. Fitur yang Harus Dibuat
-
-Starter sudah dapat: menambahkan task, menampilkan daftar task, dan menghapus
-task. Berikut 6 fitur yang **wajib** ditambahkan (sesuai untuk 5 orang: PM +
-4 developer, masing-masing developer menangani 1 fitur, sedangkan 1 fitur
-sisanya dapat dibagi/dirotasi atau ditangani oleh PM).
-
-> **Catatan urutan pengerjaan:** Fitur #4 (localStorage) sebaiknya dikerjakan
-> paling awal dan di-merge terlebih dahulu ke `dev`, karena fitur lain
-> (toggle complete, edit) idealnya turut tersimpan. Apabila dikerjakan
-> belakangan pun tidak menjadi masalah besar, hanya saja pihak yang
-> mengerjakannya perlu menyesuaikan fungsi `renderTasks()` yang mungkin
-> sudah diubah oleh anggota lain. Hal ini justru menjadi latihan yang baik
-> terkait merge conflict dan koordinasi backlog.
+## 6. Fitur yang Dibuat
 
 ### Fitur #1: Tandai Task Selesai (Mark as Complete)
 Tambahkan checkbox pada setiap task. Apabila dicentang, task ditandai selesai
 (teks dicoret/strikethrough dan warnanya dibuat lebih pudar).
 
-**Hint:**
-- Tambahkan properti `completed: false` pada object task (sudah tersedia di
-  starter).
-- Buat fungsi `toggleComplete(id)` yang membalik nilai `completed`.
-- Pada `renderTasks()`, tambahkan `<input type="checkbox">` sebelum teks,
-  atur `checked` sesuai `task.completed`, dan tambahkan class `completed`
-  pada `<li>` apabila task tersebut sudah selesai. Style untuk class
-  `.completed` sudah disiapkan tempatnya pada `style.css`.
-
 ### Fitur #2: Edit Task
 Pengguna dapat mengubah teks task yang sudah ada tanpa perlu menghapus dan
 membuat task baru.
-
-**Hint:**
-- Tambahkan tombol "Edit" di samping tombol hapus.
-- Saat tombol tersebut diklik, ubah tampilan `<span>` menjadi
-  `<input type="text">` berisi teks task saat ini (arahkan fokus ke input
-  tersebut).
-- Simpan perubahan saat pengguna menekan `Enter` atau mengklik tombol "Save",
-  kemudian panggil kembali `renderTasks()`.
-- Fungsi `editTask(id, newText)` sudah disiapkan tempatnya (masih kosong)
-  pada `app.js`.
 
 ### Fitur #3: Filter Task (Semua / Aktif / Selesai)
 Tambahkan 3 tombol filter di atas daftar task untuk menampilkan: seluruh
 task, task yang belum selesai saja, atau task yang sudah selesai saja.
 
-**Hint:**
-- Contoh struktur HTML untuk tombol filter sudah disertakan sebagai komentar
-  pada `index.html`.
-- Simpan filter yang sedang aktif pada sebuah variabel, misalnya
-  `let currentFilter = "all"`.
-- Pada `renderTasks()`, lakukan filter terhadap array `tasks` sesuai
-  `currentFilter` sebelum di-loop (`tasks.filter(...)`).
-- Tambahkan class `active` pada tombol filter yang sedang dipilih agar
-  pengguna mengetahui filter mana yang sedang aktif.
-
 ### Fitur #4: Simpan Data ke `localStorage`
 Data task tidak boleh hilang saat halaman dimuat ulang (refresh).
-
-**Hint:**
-- Penyimpanan: `localStorage.setItem("tasks", JSON.stringify(tasks))`,
-  panggil setiap kali data `tasks` berubah (cara paling sederhana: tempatkan
-  di akhir `renderTasks()`).
-- Pemuatan data: saat script pertama kali dijalankan, periksa
-  `localStorage.getItem("tasks")`. Apabila terdapat data, lakukan
-  `JSON.parse()` dan masukkan ke variabel `tasks` sebelum `renderTasks()`
-  dipanggil pertama kali.
-- Pastikan `nextId` turut diperbarui saat data dimuat, agar id task baru
-  tidak bertabrakan dengan task lama (misalnya
-  `nextId = Math.max(...tasks.map(t => t.id), 0) + 1`).
 
 ### Fitur #5: Counter Task Tersisa
 Tampilkan teks seperti `"3 task tersisa"` yang menghitung jumlah task yang
 belum selesai (`completed === false`).
 
-**Hint:**
-- Tambahkan elemen (misalnya `<span id="task-counter">`) pada HTML. Contoh
-  strukturnya sudah disertakan sebagai komentar pada `index.html`.
-- Pada `renderTasks()`, hitung `tasks.filter(t => !t.completed).length` dan
-  perbarui `textContent` elemen counter tersebut.
-
 ### Fitur #6: Hapus Semua Task yang Sudah Selesai
 Tombol "Hapus yang Selesai" untuk menghapus seluruh task yang telah dicentang
 sekaligus.
 
-**Hint:**
-- Buat fungsi `clearCompleted()` yang meng-assign ulang `tasks` menjadi
-  `tasks.filter(t => !t.completed)`, kemudian panggil `renderTasks()`.
-- Tambahkan event listener untuk tombol `#clear-completed`.
-
-### Bonus / Stretch Goals (opsional, bagi kelompok yang selesai lebih awal)
-Fitur berikut tidak wajib, namun dapat menjadi nilai tambah sekaligus bahan
-diskusi terkait backlog prioritization apabila kelompok menyelesaikan
-pekerjaan lebih cepat:
-- Menambahkan **due date** pada setiap task.
-- **Drag-and-drop** untuk mengurutkan ulang task.
-- Toggle **dark mode**.
-- Animasi transisi saat task ditambahkan/dihapus.
-
 ---
 
-## 7. Alur Kerja Git yang Wajib Diikuti
+## 7. UI/UX Enhancement
 
-> [!IMPORTANT]
-> **Wajib ditonton sebelum mulai:** [Tutorial GitHub Project](https://links.labse.id/go/Tutorial-GitHub-Project)
+Project juga mendapatkan penyempurnaan tampilan agar lebih clean dan nyaman digunakan.
 
-Bagian ini merupakan **komponen yang paling menentukan penilaian**. Struktur
-branch yang digunakan, di dalam fork masing-masing kelompok:
-
-```
-main            ← branch final pada fork kelompok, hanya diperbarui melalui PR dari `dev` (di akhir minggu)
- └── dev        ← branch integrasi/staging, seluruh fitur bertemu di sini
-      ├── feature/toggle-complete
-      ├── feature/edit-task
-      ├── feature/filter-task
-      ├── feature/local-storage
-      ├── feature/task-counter
-      └── feature/clear-completed
-```
-
-**Langkah-langkah yang harus diikuti:**
-
-1. **Fork repo starter ini terlebih dahulu.** PM melakukan fork repo
-   [Starter-FP-LBE-2026](.) ini ke akun atau organisasi GitHub kelompok.
-   Seluruh anggota bekerja pada fork tersebut, bukan langsung pada repo
-   starter.
-2. **Backlog terlebih dahulu, baru pengerjaan kode.** PM membuat satu Issue
-   di GitHub, pada fork kelompok, untuk setiap fitur pada bagian 6 (dapat
-   menggunakan GitHub Projects/board agar lebih terstruktur), dan
-   meng-assign setiap Issue kepada anggota yang bertanggung jawab.
-3. PM membuat branch `dev` dari `main` pada fork kelompok, di awal minggu
-   pengerjaan.
-4. Setiap anggota membuat branch fitur **dari `dev`**, dengan penamaan yang
-   jelas, misalnya `feature/toggle-complete`. **Tidak diperkenankan**
-   mengerjakan langsung pada `main` maupun `dev`.
-5. Commit disertai pesan yang jelas dan deskriptif, contoh:
-   `feat: tambah checkbox untuk toggle task selesai`, bukan sekadar
-   `update` atau `fix bug`.
-6. Setelah fitur selesai, push branch tersebut dan ajukan **Pull Request ke
-   `dev`** pada fork kelompok (bukan ke `main`). Deskripsi Pull Request
-   memuat penjelasan pekerjaan yang dilakukan beserta nomor Issue terkait.
-7. **Minimal satu anggota lain** wajib melakukan review terhadap Pull
-   Request tersebut sebelum di-merge (memberi komentar/approval). Proses
-   merge umumnya dilakukan oleh PM setelah Pull Request disetujui.
-8. Merge conflict, apabila terjadi, diselesaikan melalui komunikasi antar
-   anggota, bukan dengan `--force`.
-9. Pada akhir minggu, setelah seluruh fitur berada di `dev` dan telah diuji
-   bersama, ajukan Pull Request dari `dev` ke `main` pada fork kelompok,
-   lakukan review sekali lagi, kemudian merge.
-10. **Sebagai bentuk pengumpulan tugas**, setelah `main` pada fork kelompok
-    berisi versi final, ajukan satu **Pull Request dari fork kelompok ke
-    repo starter ini** (dari `main` fork ke `main` repo starter). Beri judul
-    Pull Request sesuai nama kelompok, misalnya `Kelompok 1`.
-11. **Tidak diperkenankan** ada commit langsung ke `main` atau `dev`. Seluruh
-    perubahan harus melalui Pull Request, termasuk perubahan berskala kecil
-    sekalipun.
-
-Apabila terdapat anggota yang memerlukan bantuan menyelesaikan conflict atau
-mengalami kesulitan terkait branch, hal tersebut justru menjadi bagian dari
-penilaian, yaitu bagaimana kelompok menyelesaikan permasalahan kolaborasi,
-bukan semata-mata hasil akhir yang dicapai.
+Beberapa perubahan yang dilakukan:
+- Layout aplikasi dengan card yang lebih clean.
+- Warna dan typography yang konsisten.
+- Button dan filter dengan active/hover state.
+- Tampilan task yang lebih rapi.
+- Responsive layout untuk ukuran layar yang lebih kecil.
+- Animasi sederhana saat task ditampilkan.
 
 ---
 
@@ -325,24 +169,26 @@ fitur yang berhasil dibuat. Bobot penilaian yang disarankan:
 
 ## 9. Checklist Sebelum Pengumpulan
 
-- [ ] Pekerjaan dilakukan pada fork repo starter ini, bukan pada repo
+- [x] Pekerjaan dilakukan pada fork repo starter ini, bukan pada repo
       starter secara langsung.
-- [ ] Branch `main` pada fork kelompok berisi versi final (hasil merge dari
+- [x] Branch `main` pada fork kelompok berisi versi final (hasil merge dari
       `dev`).
-- [ ] Branch `dev` masih tersedia pada fork kelompok (tidak dihapus) sebagai
+- [x] Branch `dev` masih tersedia pada fork kelompok (tidak dihapus) sebagai
       bukti histori pengerjaan.
-- [ ] Seluruh fitur pada bagian 6 telah dikerjakan melalui branch `feature/*`
+- [x] Seluruh fitur pada bagian 6 telah dikerjakan melalui branch `feature/*`
       masing-masing.
-- [ ] Terdapat bukti Issues/backlog pada GitHub (screenshot dapat dilampirkan
-      apabila diminta).
-- [ ] Seluruh merge ke `dev`/`main` dilakukan melalui Pull Request, bukan
+- [x] Terdapat bukti Issues/backlog pada GitHub
+- [x] Seluruh merge ke `dev`/`main` dilakukan melalui Pull Request, bukan
       commit langsung.
-- [ ] README diperbarui apabila terdapat perubahan struktur folder/fitur.
-- [ ] Proyek dapat dijalankan cukup dengan membuka `src/index.html`.
+- [x] README diperbarui apabila terdapat perubahan struktur folder/fitur.
+- [x] Proyek dapat dijalankan cukup dengan membuka `src/index.html`.
 - [ ] Pull Request pengumpulan tugas dari fork kelompok ke repo starter ini
       sudah diajukan, dengan judul sesuai nama kelompok (misalnya
       `Kelompok 1`).
 
-Selamat mengerjakan. Perlu diingat bahwa penilaian tidak ditujukan untuk
-menentukan siapa yang paling mahir coding secara individu, melainkan
-**seberapa baik tim bekerja secara kolaboratif**.
+### Bukti Backlog Project
+
+Berikut merupakan backlog yang digunakan untuk mengatur pembagian dan progres fitur dalam project:
+<img width="1184" height="590" alt="Screenshot 2026-09-20 215515" src="https://github.com/user-attachments/assets/f91a4e95-0504-4d2b-b627-b91ad7d8b728" />
+
+

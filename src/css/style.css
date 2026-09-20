@@ -8,86 +8,105 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 16px;
-  background: #f2f4f7;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #1f2937;
+  padding: 50px 16px;
+  background: #fff7ec;
+  font-family: Helvetica, Arial, sans-serif;
+  color:  #070d0d;
 }
 
 .app {
   width: 100%;
-  max-width: 480px;
+  max-width: 560px;
   background: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eadfd5;
+  border-radius: 30px;
+  padding: 32px;
+  box-shadow: 0 15px 40px rgba(68, 47, 42, 0.10);
 }
 
 h1 {
   margin: 0 0 20px;
-  font-size: 1.5rem;
-  text-align: center;
+  color: #442f2a;  
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .task-form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #e7ddd5;
+  border-radius: 18px;
+  background: #ffffff;
 }
 
 .task-form input {
   flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 1rem;
+  min-width: 0;
+  padding: 12px 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: #070d0d;
+}
+
+.task-form input::placeholder {
+  color: #a39a96;
 }
 
 .task-form button {
-  padding: 10px 16px;
+  padding: 11px 20px;
   border: none;
-  border-radius: 8px;
-  background: #4f46e5;
-  color: #fff;
-  font-size: 1rem;
+  border-radius: 14px;
+  background: #f8e8ed;
+  color: #442f2a;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .task-form button:hover {
-  background: #4338ca;
+  background: #442f2a;
+  color: #ffffff;
 }
 
 /*
   TODO (Fitur #3 - Filter Task):
-  Tambahkan style untuk .filters dan .filter-btn di sini.
-  Tandai tombol filter yang sedang aktif, misalnya dengan class ".active".
 */
 .filters {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .filter-btn {
   flex: 1;
-  padding: 6px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  background: #dbdbdb;
-  color: #1f2937;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 14px;
+  background: #f8e8ed;
+  color: #442f2a;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .filter-btn:hover {
-  background: #8c8c92;
-  color: #fff;
+  background: #f5dce3;
 }
 
 .filter-btn.active {
   font-weight: bold;
-  background: #4f46e5;
-  color: #fff;
+  background: #442f2a;
+  color: #ffffff;
 }
 
 .task-list {
@@ -96,134 +115,191 @@ h1 {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .task-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  gap: 12px;
+  padding: 17px 4px;
+  border-bottom: 1px solid #eee5df;
+  background: #ffffff;
+  animation: taskAppear 0.2s ease-out;
 }
 
-.task-item span {
-  flex: 1;
-  word-break: break-word;
+.task-item:first-child {
+  border-top: 1px solid #eee5df;
 }
 
-.task-item .delete-btn {
-  border: none;
-  background: transparent;
-  color: #ef4444;
-  font-size: 1.1rem;
+@keyframes taskAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.complete-checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #442f2a;
   cursor: pointer;
-  line-height: 1;
 }
 
-.task-item .delete-btn:hover {
-  color: #b91c1c;
-}
-
-.empty-state {
-  text-align: center;
-  color: #9ca3af;
-  padding: 16px 0;
-  font-size: 0.9rem;
+.task-item .task-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  color: #070d0d;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /*
   TODO (Fitur #1 - Tandai Selesai):
-  Tambahkan style untuk task yang sudah selesai, misalnya class ".completed"
-  pada .task-item yang membuat teksnya dicoret (text-decoration: line-through)
-  dan warnanya lebih pudar. - done
 */
 
 .task-item.completed span {
   text-decoration: line-through;
-  color: #9ca3af;
+  color: #9c9592;
 }
 
 /*
   TODO (Fitur #2 - Edit Task):
-  Tambahkan style untuk mode edit, misalnya input text yang muncul
-  menggantikan <span> saat task sedang diedit.
 */
 .task-item input{
   flex: 1;
+  min-width: 0;
   padding: 8px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  border: 1px solid #dfcfd0;
+  border-radius: 10px;
+  background: #fffaf7;
+  color: #070d0d;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  outline: none;
 }
 
-.task-item .edit-btn {
-  border: none;
-  background: #ecef44;
-  color: #000000;
-  border-radius: 4px;
-  padding: 4px 9px;
-  font-size: 0.8rem;
-  line-height: 1;
-  cursor: pointer;
+.task-item input:focus {
+  border-color: #f5cbd7;
 }
 
-.task-item .edit-btn:hover {
-  font-weight: bold;
-  color: #000000;
-  opacity : 0.9;
-}
-
+.task-item .edit-btn,
 .task-item .save-btn {
+  flex-shrink: 0;
   border: none;
-  background: #47ef44;
-  color: #fff;
-  border-radius: 4px;
-  padding: 4px 8px;
+  background: #f5cbd7;
+  color: #442f2a;
+  border-radius: 12px;
+  padding: 8px 13px;
   font-size: 0.8rem;
-  line-height: 1;
+  font-family: Helvetica, Arial, sans-serif;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
+.task-item .edit-btn:hover,
 .task-item .save-btn:hover {
-  font-weight: bold;
-  color: #fff;
-  opacity : 0.9;
+  background: #efb8c8;
 }
-
-
 
 /*
   TODO (Fitur #5 & #6 - Counter & Clear Completed):
-  Tambahkan style untuk .footer yang berisi counter task dan tombol
-  "Hapus yang Selesai".
 */
 
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #eee5df;
 }
 
 #task-counter {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #8d8581;
 }
 
-#clear-completed {
-  padding: 6px 12px;
+#clear-completed-btn {
+  padding: 8px 13px;
   border: none;
-  border-radius: 8px;
-  background: #4f46e5;
-  color: #fff;
+  border-radius: 12px;
+  background: #f5cbd7;
+  color: #442f2a;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 0.8rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
-#clear-completed:hover {
-  background: #4338ca;
+#clear-completed-btn:hover {
+  background: #efb8c8;
+}
+
+.task-item .delete-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border: none;
+  border-radius: 50%;
+  background: #f8e8ed;
+  color: #442f2a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.task-item .delete-btn:hover {
+  background: #f5cbd7;
+}
+
+.task-item .delete-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+}
+
+.empty-state {
+  text-align: center;
+  color: #9c9592;
+  padding: 28px 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 25px 12px;
+  }
+
+  .app {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .task-item {
+    gap: 8px;
+  }
+
+  .task-item .edit-btn,
+  .task-item .save-btn {
+    padding: 7px 10px;
+  }
+
+  .task-item .delete-btn {
+    width: 34px;
+    height: 34px;
+  }
 }
